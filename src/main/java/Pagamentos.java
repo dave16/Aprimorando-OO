@@ -1,0 +1,63 @@
+import java.util.ArrayList;
+import java.util.Calendar;
+
+ 
+public class Pagamentos {
+
+	private double valorPago;
+	private ArrayList<Pagamento> pagamentos = new ArrayList<>();
+	
+	public ArrayList<Pagamento> pagamentoAntesDe(Calendar data){
+		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
+		for(Pagamento pagamento : this.pagamentos){
+			if(pagamento.getData().before(data)){
+				pagamentosFiltrados.add(pagamento);
+			}
+		}
+		return pagamentosFiltrados;
+	}
+	
+	public ArrayList<Pagamento> pagamentosComValorMaiorQue(double valorMinimo){
+		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<>();
+		for(Pagamento pagamento : this.pagamentos){
+			if(pagamento.getValor() > valorMinimo){
+				pagamentosFiltrados.add(pagamento);
+			}
+		}
+		return pagamentosFiltrados;
+	}
+	
+	public ArrayList<Pagamento> pagamentoDo(String cnpjPagador){
+		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<>();
+		for(Pagamento pagamento : this.pagamentos){
+			if(pagamento.getCnpjPagador().equals(cnpjPagador)){
+				pagamentosFiltrados.add(pagamento);
+			}
+		}
+		return pagamentosFiltrados;
+	}
+	
+	public double getValorPago() {
+		return valorPago;
+	}
+	
+	private void paga(double valor){
+		if(valor < 0){
+			throw new IllegalArgumentException("Valor invalido para pagamento");
+		}
+		if(valor > 100){
+			valor = valor - 8;
+		}
+		this.valorPago += valor;
+	}
+	
+	public void registra(Pagamento pagamento){
+		this.pagamentos.add(pagamento);
+		this.paga(pagamento.getValor());
+	}
+	
+	public boolean foiRealizado(Pagamento pagamento){
+		return pagamentos.contains(pagamento);
+	}
+	
+}

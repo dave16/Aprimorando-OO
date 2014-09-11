@@ -1,12 +1,5 @@
 
-public class Arraylist {
-
-	public Object proximo(){
-		
-		return null;
-		
-	}
-	
+public class Arraylist implements Colecao {
 	
 	public boolean add(Object element){
 		//adiciona um elemnto

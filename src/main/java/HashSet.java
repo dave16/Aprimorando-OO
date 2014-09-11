@@ -1,11 +1,6 @@
-public class HashSet {
+public class HashSet implements Colecao{
 
-	public Object proximo() {
-
-		return null;
-
-	}
-
+	
 	public boolean add(Object element) {
 		// adiciona um elemnto
 		return true;

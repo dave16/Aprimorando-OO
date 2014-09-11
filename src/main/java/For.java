@@ -1,15 +1,10 @@
 
 public class For {
 
-	public void percorreColecao(Object colecao){
+	public void percorreColecao(Colecao colecao){
 		
-		String tipoColecao = descobreTipoDeColecao(colecao);
-		
-		if("ArrayList".equals(tipoColecao)){
-			
-		}else if("HashSet".equals(tipoColecao)){
-			
-		}
+		Object primeiro = colecao.proximo();
+		Object segundo = colecao.proximo();
 		
 	}
 }

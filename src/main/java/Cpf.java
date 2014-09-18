@@ -1,8 +1,8 @@
-public class Cnpj implements Documento {
+public class Cpf implements Documento{
 	
 	private final String valor;
 
-	public Cnpj(String valor) {
+	public Cpf(String valor) {
 		this.valor = valor;
 	}
 
@@ -15,10 +15,10 @@ public class Cnpj implements Documento {
 	}
 	
 	public boolean equals(Object o){
-		if(!(o instanceof Cnpj)){
+		if(!(o instanceof Cpf)){
 			return false;
 		}
-		Cnpj outro = (Cnpj) o;
+		Cpf outro = (Cpf) o;
 		return this.valor.equals(outro);
 	}
 	
